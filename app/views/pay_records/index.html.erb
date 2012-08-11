@@ -1,0 +1,9 @@
+<h1> 收费记录 </h1>
+<table>
+  <% @show_records.each do |record| %>
+  <tr>
+  	<td> <%= record.Capital %> </td>
+  	<td> <%= record.PayPower %> </td>
+  </tr>
+  <% end %>
+</table>

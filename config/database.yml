@@ -1,0 +1,31 @@
+development:
+  adapter: sqlserver
+  host: 192.168.1.19
+  port: 1433
+  database: wlg0801
+  username: sa
+  password: xlht
+
+wlg:
+  adapter: sqlserver
+  host: 192.168.1.19
+  port: 1433
+  database: wlg
+  username: sa
+  password: xlht
+
+test:
+  adapter: sqlserver
+  host: 192.168.1.19
+  port: 1433
+  database: sms_test
+  username: sa
+  password: xlht
+
+production:
+  adapter: sqlserver
+  host: 192.168.0.18
+  port: 1433
+  database: sms_test
+  username: sa
+  password: '123456'
