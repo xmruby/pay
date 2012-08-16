@@ -1,0 +1,29 @@
+<h1>电表信息</h1>
+<div sytle='width:1003px;'>
+<% if @meter_be_searched.nil? %>
+	<div style="height:200px;line-height:200px;">
+    请填写2个以上条件！
+	</div>
+  <input type=button value=后退 onclick="window.history.go(-1)">
+<% elsif @meter_be_searched.count == 0 %>
+	<div style="height:200px;line-height:200px;">
+    没有找到相关电表
+	</div>
+  <input type=button value=后退 onclick="window.history.go(-1)">
+<% else %>
+<table class="table table-condensed">
+	<tr><th>电表编号</th><th>用户姓名</th><th>地址</th><th>剩余电量</th><th>用户电话</th><th>查看收费记录</th><th>查看日用电量</th></tr>
+	<% @meter_be_searched.each do |meter| %>
+		<tr>
+			<td> <%= meter.Meter_ID %> </td>
+			<td> <%= meter.User_Name %> </td>
+			<td> <%= meter.User_Addr %> </td>
+			<td> <%= meter.meter_data.SparePwr %> </td>
+			<td> <%= meter.User_Phon %> </td>
+			<td> <%= link_to '收费记录', "/meters/#{meter.id}/pay_records" %> </td>
+			<td> <%= link_to '日用电量', "/meters/#{meter.id}/meter_day_datas" %> </td>
+		</tr>
+	</table>
+	<% end %>
+<% end %>
+<div>

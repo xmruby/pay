@@ -1,12 +1,9 @@
 class MetersController < ApplicationController
+  layout "meters"
   def index
   	# rest
   	# routes
     @meters = Meter.limit(30)
-    # respond_to do |format|
-    #   format.html #index.html.erb
-    #   format.xml { render :xml => @meters}
-    # end 
   end
 
   def short
@@ -32,12 +29,25 @@ class MetersController < ApplicationController
     redirect_to :action => 'list'
   end
 
-  def list
-    # wants is determined by the http Accept header in the request
-    @meters = Meter.limit(10)
-    # respond_to do |format|
-    #   index.html.erb
-    #   format.xml { render :xml => @meters.to_xml }
-    # end    
+  def search_meter
+    @meter_be_searched = Meter.search(params) if params_count >= 2
+  end
+
+  private
+  def params_count
+    count = 0
+    if params[:user_id].blank? == false
+      count = count + 1
+    end
+    if params[:user_name].blank? == false
+      count = count + 1
+    end
+    if params[:user_phone].blank? == false
+      count = count + 1
+    end
+    if params[:meter_id].blank? == false
+      count = count + 1
+    end
+    count
   end
 end

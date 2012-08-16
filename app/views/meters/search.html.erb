@@ -1,0 +1,45 @@
+<div style="text-align:center">
+	<div></br></br></div>
+<%= form_tag("/meters/search_meter", :method => "get") do %>
+<table>
+	<tr>
+	  <td>
+	    <%= label_tag '用户编号', nil, :class => 'input-medium search-query' %> 
+	  </td>
+	  <td>
+	    <%= text_field_tag(:user_id) %>
+	  </td>
+	</tr>
+	 <tr>
+	  <td>
+	    <%= label_tag '用户姓名', nil, :class => 'input-medium search-query' %>
+	  </td>
+	  <td>
+	    <%= text_field_tag(:user_name) %>
+	  </td>
+	</tr>
+	<tr>
+	  <td>
+  		<%= label_tag '用户电话', nil, :class => 'input-medium search-query' %>
+	  </td>
+	  <td>
+  		<%= text_field_tag(:user_phone) %>
+	  </td>
+	</tr>
+	<tr>
+	  <td>
+  		<%= label_tag '电表编号', nil, :class => 'input-medium search-query' %>
+	  </td>
+	  <td>
+  		<%= text_field_tag(:meter_id) %>
+	  </td>
+	</tr>
+	<tr>
+		<td></td>
+	  <td style="text-align:center">
+  		<%= submit_tag nil, :class => 'btn btn-primary' %>
+	  </td>
+	</tr>
+ <table>
+<% end %>
+</div>

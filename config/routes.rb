@@ -46,15 +46,19 @@ Pay::Application.routes.draw do
   #     resources :products
   #   end
   resources :meters do
+    resources :pay_records
+    resources :meter_day_datas
     member do
-      get 'short'
       post 'toggle'
     end
     collection do
-      get 'list'
+      get 'search_meter'
+      get 'search'
     end
   end
-  resources :pay_records
+  # resources :pay_records do
+    
+  # end
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.
   # root :to => 'welcome#index'

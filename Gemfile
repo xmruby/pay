@@ -24,7 +24,6 @@ gem 'therubyracer'
 gem "composite_primary_keys"
 gem 'whenever', :require => false
 
-
 # To use Jbuilder templates for JSON
 # gem 'jbuilder'
 

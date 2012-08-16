@@ -1,0 +1,13 @@
+
+
+<h1>日用电量详细列表</h1>
+<table class='table'>
+	<tr><th>日期</th><th>日使用电量</th><th>剩余电量</th></tr>
+<% @meter_days_data.each do |data| %>
+	<tr>
+		<td> <%= data[:date].strftime('%Y-%m-%d') %> </td>
+		<td> <%= data[:spare_power] %> </td>
+		<td> <%= data[:power] %> </td>
+	</tr>
+<% end %>
+</table>
