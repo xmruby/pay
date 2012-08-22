@@ -9,11 +9,12 @@ class MeterDayData < ActiveRecord::Base
 
   def self.search(m_id, start_date, end_date)
   	start_date = Time.zone.parse(start_date) - 1.day
-  	end_date = Time.zone.parse(end_date)
+  	end_date = Time.zone.parse(end_date) + 1.day
   	get_days_power(by_id_in_date(m_id, start_date, end_date), start_date, end_date)
 
   end
 
+  private
   # 获取 每日数据的 数组days_power[]
   def self.get_days_power(datas, start_date, end_date) 
   	days_power = []
@@ -33,32 +34,38 @@ class MeterDayData < ActiveRecord::Base
   end
 
   def self.get_finally_data(days_power, start_date, end_date)
-  	datas = []
-  	# for day in (start_date.to_date...end_date.to_date) do day
-  	# 	if()
-  	# end
+  	datas = []  	
 		for i in(1...days_power.length) do
 			datas << { :power => days_power[i][:Real_z] - days_power[i-1][:Real_z], :date => days_power[i][:M_date], :spare_power => days_power[i][:SparePwr], :total_power => days_power[i][:Real_z]}
 		end
-		datas
+    # datas
+		compensation_data_by_date(datas, start_date, end_date)
+  end
+  # 按开始日期和结束日期来补数据
+  def self.compensation_data_by_date(datas, start_date, end_date)
+    sort_datas = []
+    for day in (start_date.to_date + 1.day...end_date.to_date) do day
+      have_data_flag = false
+      for i in(0...datas.length) do
+        if(day.strftime('%Y-%m-%d') == datas[i][:date].strftime('%Y-%m-%d'))
+          have_data_flag = true
+        end
+      end
+      if have_data_flag == false
+        datas << { :power => '无数据', :date => Time.zone.parse(day.strftime('%Y-%m-%d').to_s), :spare_power => '无数据', :total_power => '无数据'}
+      end
+    end
+    srot_datas = datas.sort_by{ |k| k[:date] }
   end
 
-  def self.get_day_data(datas, days_power, day)
-  	flag = false
-  	datas.each do |data|
-  		if(data.M_date.strftime("%Y-%m-%d") == day.strftime("%Y-%m-%d"))
-  		  days_power << { :real_z => data.Real_z, :m_date => data.M_date, :spare_power => data.SparePwr}
-  		  flag = true
-  		end
-  	end
-  	flag
-  end
-
+  
+  
+  # 获取 日平均用电量
   def self.get_avg_power(pre_day_data, next_day_data, days)
   	avg_power = (next_day_data[:Real_z] - pre_day_data[:Real_z]) / days
   end
 
-  # 补数据 前一天数据、无数据隔天数、每日平均用电量
+  # 按第一条有数据的那天开始－到－最后一条有数据的那条 追补数据 前一天数据、无数据隔天数、每日平均用电量
   def self.compensation_data(pre_day_data, days, avg_power)
   	array_data = []
   	days.times.each { |v|

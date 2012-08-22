@@ -6,11 +6,19 @@ development:
   username: sa
   password: xlht
 
-wlg:
+bq:
   adapter: sqlserver
   host: 192.168.1.19
   port: 1433
-  database: wlg
+  database: bq
+  username: sa
+  password: xlht
+
+wlg0801:
+  adapter: sqlserver
+  host: 192.168.1.19
+  port: 1433
+  database: wlg0801
   username: sa
   password: xlht
 

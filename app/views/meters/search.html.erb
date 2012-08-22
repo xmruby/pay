@@ -1,45 +1,51 @@
-<div style="text-align:center">
-	<div></br></br></div>
-<%= form_tag("/meters/search_meter", :method => "get") do %>
-<table>
-	<tr>
-	  <td>
-	    <%= label_tag '用户编号', nil, :class => 'input-medium search-query' %> 
-	  </td>
-	  <td>
-	    <%= text_field_tag(:user_id) %>
-	  </td>
-	</tr>
-	 <tr>
-	  <td>
-	    <%= label_tag '用户姓名', nil, :class => 'input-medium search-query' %>
-	  </td>
-	  <td>
-	    <%= text_field_tag(:user_name) %>
-	  </td>
-	</tr>
-	<tr>
-	  <td>
-  		<%= label_tag '用户电话', nil, :class => 'input-medium search-query' %>
-	  </td>
-	  <td>
-  		<%= text_field_tag(:user_phone) %>
-	  </td>
-	</tr>
-	<tr>
-	  <td>
-  		<%= label_tag '电表编号', nil, :class => 'input-medium search-query' %>
-	  </td>
-	  <td>
-  		<%= text_field_tag(:meter_id) %>
-	  </td>
-	</tr>
-	<tr>
-		<td></td>
-	  <td style="text-align:center">
-  		<%= submit_tag nil, :class => 'btn btn-primary' %>
-	  </td>
-	</tr>
- <table>
-<% end %>
-</div>
+
+			<%= form_tag("/meters/search_meter", :method => "get") do %>
+			<table class="table table-condensed">
+				<tr>
+				  <td>
+				    <%= label_tag '旗 县 ：', nil, :class => 'input-medium search-query' %> 
+				  </td>
+				  <td>
+				    <%= select_tag "db", "<option value='wlg0801' > 乌拉盖</option> <option value='bq' > 白旗 </option> <option value='hq' > 黄旗 </option><option value='lq' > 蓝旗 </option>".html_safe %> 
+				  </td>
+				</tr>
+
+				<tr>
+				  <td>
+				    <%= label_tag '用户编号：', nil, :class => 'input-medium search-query' %> 
+				  </td>
+				  <td>
+				    <%= text_field_tag(:user_id) %>
+				  </td>
+				</tr>
+				 <tr>
+				  <td>
+				    <%= label_tag '用户姓名：', nil, :class => 'input-medium search-query' %>
+				  </td>
+				  <td>
+				    <%= text_field_tag(:user_name) %>
+				  </td>
+				</tr>
+				<tr>
+				  <td>
+			  		<%= label_tag '用户电话：', nil, :class => 'input-medium search-query' %>
+				  </td>
+				  <td>
+			  		<%= text_field_tag(:user_phone) %>
+				  </td>
+				</tr>
+				<tr>
+				  <td>
+			  		<%= label_tag '电表编号：', nil, :class => 'input-medium search-query' %>
+				  </td>
+				  <td>
+			  		<%= text_field_tag(:meter_id) %>
+				  </td>
+				</tr>
+				<tr>
+				  <td colspan="2" style="text-align:center">
+			  		<%= submit_tag nil, :class => 'btn btn-primary' %>
+				  </td>
+				</tr>
+			 </table>
+			<% end %>

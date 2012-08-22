@@ -1,14 +1,109 @@
-<!DOCTYPE html>
-<html>
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-  <title>Pay</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+  <link href="/bootstrap/css/bootstrap.css" media="all" rel="stylesheet" type="text/css" />
   <%= stylesheet_link_tag    "application", :media => "all" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
+    <title>锡林郭勒电力在线缴费查询系统1</title>
 </head>
 <body>
+    <div id="wrapper">
+        <div id="innerWrapper">
+            <div id="header">
+                <div id="innerHeader">
+                    <div id="zcmsLogo">
+                    </div>
+                    <div class="zcms-header">
+                        <div class="zcms-desc">
+                        </div>
+                    </div>
+                    <div id="navigation">
+                        <!--div class="navleft"></div><div class="navright"></div-->
+                        <ul>
+                            <li><a class="topn ahover" href="/">首页</a></li>
+                            <li><a class="topn" href="/meters/search">网上缴费</a></li>
+                            <li><a class="topn">充值卡缴费</a></li>
+                            <li><a class="topn" href="/Dlf.html">电力法</a></li>
+                            <li><a class="topn" href="/Tl.html">电力供用条例</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
 
-<%= yield %>
+            <div id="mainWrapper">
+                <div class="content" id="content">
+                    <div style="margin-top:-2px" class="textbox">
+                        <script type="text/javascript" language="javascript">
+                            writeflashhtml("_swf=swf/alixixi.swf", "_width=960", "_height=300", "_wmode=transparent");
+                        </script><object width="960" align="middle" height="300" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=8,0,24,0" classid="clsid:d27cdb6e-ae6d-11cf-96b8-444553540000"><param value="swf/alixixi.swf" name="movie"><param value="high" name="quality"><param value="false" name="menu"><param value="transparent" name="wmode"><embed width="960" align="middle" height="300" wmode="transparent" menu="false" quality="high" src="swf/alixixi.swf" type="application/x-shockwave-flash" pluginspage="http://www.macromedia.com/go/getflashplayer"></object>
+                        <div class="textbox-content">
+                            
+                            <style>
+                                .side
+                                {
+                                    float: left;
+                                    padding-bottom: 20px;
+                                    width: 480px;
+                                }
+                                .side .box
+                                {
+                                    width: auto;
+                                }
+                                .box
+                                {
+                                    color: #949494;
+                                    padding-bottom: 15px;
+                                    padding-left: 15px;
+                                    padding-right: 15px;
+                                    padding-top: 15px;
+                                    width: 560px;
+                                }
+                                .side .box h2
+                                {
+                                    -moz-background-clip: border;
+                                    -moz-background-origin: padding;
+                                    -moz-background-size: auto auto;
+                                    background-attachment: scroll;
+                                    background-color: transparent;
+                                    background-image: url("/images/title.png");
+                                    background-position: 0 -62px;
+                                    background-repeat: no-repeat;
+                                    height: 30px;
+                                    line-height: 28px;
+                                    margin-bottom: 5px;
+                                    padding-left: 22px;
+                                }
+                                .box h2
+                                {
+                                    color: #00A2F3;
+                                    font-size: 12px;
+                                    height: 20px;
+                                    line-height: 20px;
+                                    overflow-x: hidden;
+                                    overflow-y: hidden;
+                                }
+                            </style>
 
+                            <%= yield%>
+
+                        </div>
+                        <div class="textbox-bottom">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="footer">
+                <div id="innerFooter">
+                    <b><font size="2px"><font color="gray">Copyright &copy; 2010-2010 锡林郭勒电力设备有限公司 版权所有
+                        ICP证： 蒙ICP备09002550号 </font></font></b>
+                </div>
+            </div>
+        </div>
+    </div>
 </body>
 </html>

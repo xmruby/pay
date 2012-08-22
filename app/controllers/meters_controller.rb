@@ -1,32 +1,8 @@
 class MetersController < ApplicationController
-  layout "meters"
+  # layout "meters"
+  before_filter :set_db_connection
+  # , :only => [:search_meter]
   def index
-  	# rest
-  	# routes
-    @meters = Meter.limit(30)
-  end
-
-  def short
-  	render :text => params[:id]
-  end
-
-  def edit
-  	@meter = Meter.find(params[:id])
-  end
-
-  def update
-    @meter = Meter.find(params[:id])
-    if @meter.update_attributes(params[:id])
-      flash[:notice] = 'Meter was successfully updated.'
-      # redirect_to :action => 'show', :id => @person
-    else
-      render :action => 'edit'
-    end
-  end
-
-  def destroy
-    Meter.find(params[:id]).destroy
-    redirect_to :action => 'list'
   end
 
   def search_meter
@@ -49,5 +25,9 @@ class MetersController < ApplicationController
       count = count + 1
     end
     count
+  end
+
+  def set_db_connection
+    PayConfig.select_connection(params[:db])
   end
 end

@@ -5,29 +5,29 @@
 	<tr><th>日期</th><th>表底数</th><th>日使用电量</th><th>剩余电量</th></tr>
 <% @meter_days_data.each do |data| %>
 	<tr>
-		<td> <%= data[:date].strftime('%Y-%m-%d') %> </td>
-		<td> <%= format("%0.2f",data[:total_power]) %></td>
-		<td> <%= format("%0.2f",data[:power]) %> </td>
-		<td> <%= format("%0.2f",data[:spare_power]) %> </td>
+		<td> <%= begin data[:date].strftime('%Y-%m-%d') rescue data[:date] end %> </td>
+		<td> <%= begin format("%0.2f",data[:total_power]) rescue data[:total_power] end %></td>
+		<td> <%= begin format("%0.2f",data[:power]) rescue data[:power] end %> </td>
+		<td> <%= begin format("%0.2f",data[:spare_power]) rescue data[:spare_power] end %> </td>
 	</tr>
 <% end %>
 </table>
 <table style="width:100%">
 <tr>
 	<%= form_tag("/meters/#{params[:meter_id]}/meter_day_datas", :method => "get") do %>
-	<input type='hidden' name='start_date' value=<%=Time.now.beginning_of_month.strftime("%Y-%m-%d") %> />
-	<input type='hidden' name='end_date' value=<%=Time.now.strftime("%Y-%m-%d") %> />
+	<input type='hidden' name='start_date' value=<%= Time.now.beginning_of_month.strftime("%Y-%m-%d") %> />
+	<input type='hidden' name='end_date' value=<%= Time.now.strftime("%Y-%m-%d") %> />
 	<td>
 		<%= submit_tag '本月', :class => 'btn btn-primary' %>
 		<% end %>
 	</td>
 
 	<%= form_tag("/meters/#{params[:meter_id]}/meter_day_datas", :method => "get") do %>
-	<input type='hidden' name='start_date' value=<%=Time.now.prev_month.beginning_of_month.strftime("%Y-%m-%d") %>/>
-	<input type='hidden' name='end_date' value=<%=Time.now.prev_month.end_of_month.strftime("%Y-%m-%d") %>/>
+	<input type='hidden' name='start_date' value=<%= Time.now.prev_month.beginning_of_month.strftime("%Y-%m-%d") %>/>
+	<input type='hidden' name='end_date' value=<%= Time.now.prev_month.end_of_month.strftime("%Y-%m-%d") %>/>
 	<td>
 		<%= submit_tag '上月', :class => 'btn btn-primary' %>
 		<% end %>
 	</td>
 </tr>
-<table>
+</table>

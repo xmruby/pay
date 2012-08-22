@@ -5,3 +5,48 @@
 2、查看一个月用电情况（图表）
 3、查看缴费记录（按日期） 
 
+
+
+[
+    #<MeterDayDataM_ID: 5388,
+    Meter_Id: "55862",
+    M_date: "2012-07-26 07:26:02",
+    RTU_ID: 1,
+    Real_z: 3215.2099609375,
+    CurrPower: 0.0>,
+    #<MeterDayDataM_ID: 5388,
+    Meter_Id: "55862",
+    M_date: "2012-07-27 07:26:02",
+    RTU_ID: 1,
+    Real_z: 3187.4099609375,
+    CurrPower: 0.0>,
+    #<MeterDayDataM_ID: 5388,
+    Meter_Id: "55862",
+    M_date: "2012-07-28 07:26:02",
+    RTU_ID: 1,
+    Real_z: 3159.6099609375,
+    CurrPower: 0.0>,
+    #<MeterDayDataM_ID: 5388,
+    Meter_Id: "55862",
+    M_date: "2012-07-29 07:26:02",
+    RTU_ID: 1,
+    Real_z: 3131.8099609375,
+    CurrPower: 0.0>,
+    #<MeterDayDataM_ID: 5388,
+    Meter_Id: "55862",
+    M_date: "2012-07-30 07:26:02",
+    RTU_ID: 1,
+    Real_z: 3104.0099609375,
+    CurrPower: 0.0>,
+    #<MeterDayDataM_ID: 5388,
+    Meter_Id: "55862",
+    M_date: "2012-07-31 07:26:02",
+    RTU_ID: 1,
+    Real_z: 3076.2099609375,
+    #<MeterDayDataM_ID: 5388,
+    Meter_Id: "55862",
+    M_date: "2012-08-01 07:30:02",
+    RTU_ID: 1,
+    Real_z: 3510.2099609375,
+    CurrPower: 0.0>
+]
