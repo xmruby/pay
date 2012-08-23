@@ -52,7 +52,7 @@ Pay::Application.routes.draw do
       post 'toggle'
     end
     collection do
-      get 'search_meter'
+      get 'show_search'
       get 'search'
     end
   end

@@ -25,8 +25,8 @@
                     <div id="navigation">
                         <!--div class="navleft"></div><div class="navright"></div-->
                         <ul>
-                            <li><a class="topn ahover" href="/">首页</a></li>
-                            <li><a class="topn" href="/meters/search">网上缴费</a></li>
+                            <li><a class="topn <%='ahover' if controller.controller_name == 'home' && controller.action_name == 'index'%>" href="/">首页</a></li>
+                            <li><a class="topn <%='ahover' if controller.controller_name == 'meters' || controller.controller_name == 'pay_records' || controller.controller_name =='meter_day_datas'%>" href='/meters/show_search'>网上缴费</a></li>
                             <li><a class="topn">充值卡缴费</a></li>
                             <li><a class="topn" href="/Dlf.html">电力法</a></li>
                             <li><a class="topn" href="/Tl.html">电力供用条例</a></li>
@@ -39,8 +39,8 @@
                 <div class="content" id="content">
                     <div style="margin-top:-2px" class="textbox">
                         <script type="text/javascript" language="javascript">
-                            writeflashhtml("_swf=swf/alixixi.swf", "_width=960", "_height=300", "_wmode=transparent");
-                        </script><object width="960" align="middle" height="300" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=8,0,24,0" classid="clsid:d27cdb6e-ae6d-11cf-96b8-444553540000"><param value="swf/alixixi.swf" name="movie"><param value="high" name="quality"><param value="false" name="menu"><param value="transparent" name="wmode"><embed width="960" align="middle" height="300" wmode="transparent" menu="false" quality="high" src="swf/alixixi.swf" type="application/x-shockwave-flash" pluginspage="http://www.macromedia.com/go/getflashplayer"></object>
+                            writeflashhtml("_swf=/assets/alixixi.swf", "_width=960", "_height=300", "_wmode=transparent");
+                        </script><object width="960" align="middle" height="300" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=8,0,24,0" classid="clsid:d27cdb6e-ae6d-11cf-96b8-444553540000"><param value="swf/alixixi.swf" name="movie"><param value="high" name="quality"><param value="false" name="menu"><param value="transparent" name="wmode"><embed width="960" align="middle" height="300" wmode="transparent" menu="false" quality="high" src="/assets/alixixi.swf" type="application/x-shockwave-flash" pluginspage="http://www.macromedia.com/go/getflashplayer"></object>
                         <div class="textbox-content">
                             
                             <style>

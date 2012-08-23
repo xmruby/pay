@@ -1,51 +1,36 @@
 
-			<%= form_tag("/meters/search_meter", :method => "get") do %>
-			<table class="table table-condensed">
-				<tr>
-				  <td>
-				    <%= label_tag '旗 县 ：', nil, :class => 'input-medium search-query' %> 
-				  </td>
-				  <td>
-				    <%= select_tag "db", "<option value='wlg0801' > 乌拉盖</option> <option value='bq' > 白旗 </option> <option value='hq' > 黄旗 </option><option value='lq' > 蓝旗 </option>".html_safe %> 
-				  </td>
-				</tr>
-
-				<tr>
-				  <td>
-				    <%= label_tag '用户编号：', nil, :class => 'input-medium search-query' %> 
-				  </td>
-				  <td>
-				    <%= text_field_tag(:user_id) %>
-				  </td>
-				</tr>
-				 <tr>
-				  <td>
-				    <%= label_tag '用户姓名：', nil, :class => 'input-medium search-query' %>
-				  </td>
-				  <td>
-				    <%= text_field_tag(:user_name) %>
-				  </td>
-				</tr>
-				<tr>
-				  <td>
-			  		<%= label_tag '用户电话：', nil, :class => 'input-medium search-query' %>
-				  </td>
-				  <td>
-			  		<%= text_field_tag(:user_phone) %>
-				  </td>
-				</tr>
-				<tr>
-				  <td>
-			  		<%= label_tag '电表编号：', nil, :class => 'input-medium search-query' %>
-				  </td>
-				  <td>
-			  		<%= text_field_tag(:meter_id) %>
-				  </td>
-				</tr>
-				<tr>
-				  <td colspan="2" style="text-align:center">
-			  		<%= submit_tag nil, :class => 'btn btn-primary' %>
-				  </td>
-				</tr>
-			 </table>
-			<% end %>
+<h1>电表信息</h1>
+<div>
+<% if @meter_be_searched.nil? %>
+	<div style="height:200px;line-height:200px;">
+    请填写2个以上条件！
+	</div>
+  <input type=button value=后退 onclick="window.history.go(-1)">
+<% elsif @meter_be_searched.count == 0 %>
+	<div style="height:200px;line-height:200px;">
+    没有找到相关电表
+	</div>
+  <input type=button value=后退 onclick="window.history.go(-1)">
+<% elsif @meter_be_searched.count > 1 %>
+	<div style="height:200px;line-height:200px;">
+      根据您的查询条件不能确定用户的唯一性， 请填写更多的查询条件！
+	</div>
+  <input type=button value=后退 onclick="window.history.go(-1)">
+<% else @meter_be_searched.count == 1 && session[:id] == @meter_be_searched[0][:M_Id] %>
+  <table class="table table-condensed">
+	<tr><th>电表编号</th><th>用户姓名</th><th>地址</th><th>剩余电量</th><th>用户电话</th><th>查看收费记录</th><th>查看日用电量</th></tr>
+	<% @meter_be_searched.each do |meter| %>
+		<tr>
+			<td> <%= meter.Meter_ID %> </td>
+			<td> <%= meter.User_Name %> </td>
+			<td> <%= meter.User_Addr %> </td>
+			<td> <%= meter.meter_data.SparePwr %> </td>
+			<td> <%= meter.User_Phon %> </td>
+			<td> <%= link_to '收费记录', "/meters/#{meter.id}/pay_records" %> </td>
+			<td> <%= link_to '日用电量', "/meters/#{meter.id}/meter_day_datas" %> </td>
+		</tr>
+	</table>
+  	<input  class="btn btn-primary" type=button value=返回 onclick="window.history.go(-1)">
+	<% end %>
+<% end %>
+</div>
